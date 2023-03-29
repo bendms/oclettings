@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ("oc_lettings_site", "0002_auto_20230328_1354"),
     ]
 
     operations = [
