@@ -42,7 +42,7 @@ jobs:
           name: Linting with flake8
           command: black . | flake8
 
-  push-to-dockerhub:
+  build-and-push-to-dockerhub:
     docker:
       - image: cimg/python:3.10.2
     steps:
@@ -73,7 +73,7 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-test-linting
-      - push-to-dockerhub
+      - build-and-push-to-dockerhub
   # heroku_deploy:
   #   jobs:
   #     - heroku/deploy-via-git:
