@@ -61,7 +61,6 @@ jobs:
           name: Publish to Docker Hub
           command: docker push "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
 
-
   # heroku_deploy:
   #   executor: heroku/default
   #   steps:
