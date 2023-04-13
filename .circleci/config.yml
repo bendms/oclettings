@@ -57,9 +57,9 @@ jobs:
       - run:
           name: Login to Docker Hub
           command: docker login --username "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASS"
-      # - run:
-      #     name: Publish to Docker Hub
-      #     command: docker push "$DOCKERHUB_USERNAME"/oclettings/${CIRCLE_SHA1}
+      - run:
+          name: Publish to Docker Hub
+          command: docker push "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
 
 
   # heroku_deploy:
