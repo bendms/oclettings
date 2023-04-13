@@ -40,7 +40,7 @@ jobs:
           command: pytest --no-migrations
       - run:
           name: Linting with flake8
-          command: black | flake8
+          command: black . | flake8
   # push-to-dockerhub:
   #   docker:
   #     - image: cimg/python:3.10.2
