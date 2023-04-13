@@ -69,11 +69,11 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  test-build-and-push-to-dockerhub: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
-    jobs:
-      - build-test-linting
-      - build-and-push-to-dockerhub
+  # test-build-and-push-to-dockerhub: # This is the name of the workflow, feel free to change it to better match your workflow.
+  #   # Inside the workflow, you define the jobs you want to run.
+  jobs:
+    - build-test-linting
+    - build-and-push-to-dockerhub
   # heroku_deploy:
   #   jobs:
   #     - heroku/deploy-via-git:
