@@ -53,7 +53,7 @@ jobs:
           command: docker build -t $DOCKERHUB_USERNAME/ocletting/${CIRCLE_SHA1} .      
       - run:
           name: Login to Docker Hub
-          command: docker login --username “$DOCKERHUB_USERNAME” —-password "$DOCKERHUB_PASS"
+          command: docker login --username "$DOCKERHUB_USERNAME" —-password "$DOCKERHUB_PASS"
       - run:
           name: Publish to Docker Hub
           command: docker push $DOCKERHUB_USERNAME/oclettings/${CIRCLE_SHA1}
