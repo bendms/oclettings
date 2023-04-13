@@ -49,11 +49,14 @@ jobs:
       - checkout
       - setup-remote-docker
       - run:
-        name: Publishing Docker Image to Docker Hub
-        command:
-        “$DOCKERHUB_PASS” | docker login -u “$DOCKERHUB_USERNAME” — password-stdin
-        docker build -t ocletting_8 .
-        docker push ocletting_8:latest
+        name: Build Docker image 
+        command: docker build -t ocletting_8 .      
+      - run:
+        name: Login to Docker Hub
+        command: docker login --username “$DOCKERHUB_USERNAME” —-password "$DOCKERHUB_PASS"
+      - run:
+        name: Publish to Docker Hub
+        command: docker push ocletting_8:latest
 
 
   # heroku_deploy:
