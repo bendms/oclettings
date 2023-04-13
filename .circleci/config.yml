@@ -10,7 +10,7 @@ orbs:
   # so you dont have to copy and paste it everywhere.
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/python
   python: circleci/python@2.1.1
-  heroku: circleci/heroku@2.0.0
+  # heroku: circleci/heroku@2.0.0
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -41,23 +41,23 @@ jobs:
       - run:
           name: Linting with flake8
           command: flake8
-  push-to-dockerhub:
-    docker:
-      - image: cimg/python:3.10.2
-      - steps:
-        - checkout
-        - setup-remote-docker
-        - run:
-        name: Publishing Docker Image to Docker Hub ...
-        command: |
-          echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" - password-stdin
-          docker build -t ocletting_8 . 
-          docker push oclettings_8:latest
-  heroku_deploy:
-    executor: heroku/default
-    steps:
-      - heroku/deploy-via-git
-        force: true
+  # push-to-dockerhub:
+  #   docker:
+  #     - image: cimg/python:3.10.2
+  #     - steps:
+  #       - checkout
+  #       - setup-remote-docker
+  #       - run:
+  #       name: Publishing Docker Image to Docker Hub ...
+  #       command: |
+  #         echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" - password-stdin
+  #         docker build -t ocletting_8 . 
+  #         docker push oclettings_8:latest
+  # heroku_deploy:
+  #   executor: heroku/default
+  #   steps:
+  #     - heroku/deploy-via-git:
+  #         force: true
     
 
 # Invoke jobs via workflows
@@ -67,13 +67,13 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-test-linting
-      - push-to-dockerhub
-  heroku_deploy:
-    jobs:
-      - heroku/deploy-via-git:
-        requires:
-        - build_test_linting
-        filters:
-          branches:
-            only: main
+  #     - push-to-dockerhub
+  # heroku_deploy:
+  #   jobs:
+  #     - heroku/deploy-via-git:
+  #       requires:
+  #       - build_test_linting
+  #       filters:
+  #         branches:
+  #           only: main
       
