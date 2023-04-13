@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
-          command: pytest
+          command: pytest --no-migrations
       - run:
           name: Linting with flake8
           command: flake8
