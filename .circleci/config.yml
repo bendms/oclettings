@@ -49,14 +49,14 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: CIRCLE_SHA1
-          command: echo "CIRCLE_SHA1=${CIRCLE_SHA1}"
-      - run:
           name: Build Docker image 
           command: docker build -t "$DOCKERHUB_USERNAME"/ocletting/oclettings:${CIRCLE_SHA1} .
       - run:
           name: Login to Docker Hub
           command: docker login --username "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASS"
+      - run:
+          name: Tag Docker Image
+          command: docker tag "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1} "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
       - run:
           name: Publish to Docker Hub
           command: docker push "$DOCKERHUB_USERNAME"/oclettings/oclettings:${CIRCLE_SHA1}
