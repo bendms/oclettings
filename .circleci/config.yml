@@ -60,7 +60,7 @@ jobs:
                   # docker tag yohz/oc_lettings:$TAG yohz/oc_lettings:latest
       - run:
           name: Publish to Docker Hub
-          command: docker push "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
+          command: docker push bdms/oclettings:${CIRCLE_SHA1}
 
   # heroku_deploy:
   #   executor: heroku/default
