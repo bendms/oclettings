@@ -82,6 +82,6 @@ workflows:
         requires:
           - build_test_linting
         filters:
-          branches:
-            only: main
+        branches:
+          only: main
       
