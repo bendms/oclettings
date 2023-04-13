@@ -50,17 +50,17 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build Docker image 
-          command: docker build -t bdms/oclettings:${CIRCLE_SHA1} .
+          command: docker build -t "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1} .
       - run:
           name: Login to Docker Hub
           command: docker login --username "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASS"
       - run:
           name: Tag Docker Image
-          command: docker tag bdms/oclettings:${CIRCLE_SHA1} bdms/oclettings:${CIRCLE_SHA1}
+          command: docker tag "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1} "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
                   # docker tag yohz/oc_lettings:$TAG yohz/oc_lettings:latest
       - run:
           name: Publish to Docker Hub
-          command: docker push bdms/oclettings:${CIRCLE_SHA1}
+          command: docker push "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
 
   # heroku_deploy:
   #   executor: heroku/default
