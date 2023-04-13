@@ -49,6 +49,9 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: CIRCLE_SHA1
+          command: echo "CIRCLE_SHA1=${CIRCLE_SHA1}"
+      - run:
           name: Build Docker image 
           command: docker build -t "$DOCKERHUB_USERNAME"/ocletting/${CIRCLE_SHA1} .
       - run:
