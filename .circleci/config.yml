@@ -48,7 +48,7 @@ jobs:
       - image: cimg/python:3.10.2
     steps:
       - checkout
-      - setup-remote-docker
+      - docker/setup-remote-docker
       - run:
           name: Build Docker image 
           command: docker build -t $DOCKERHUB_USERNAME/ocletting/${CIRCLE_SHA1} .      
