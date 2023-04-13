@@ -50,7 +50,7 @@ jobs:
       - setup-remote-docker
       - run:
         name: Publishing Docker Image to Docker Hub
-        command: |
+        command:
         “$DOCKERHUB_PASS” | docker login -u “$DOCKERHUB_USERNAME” — password-stdin
         docker build -t ocletting_8 .
         docker push ocletting_8:latest
