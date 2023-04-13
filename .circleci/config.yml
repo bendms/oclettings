@@ -42,7 +42,6 @@ jobs:
       - run:
           name: Linting with flake8
           command: black . | flake8
-
   build-and-push-to-dockerhub:
     docker:
       - image: cimg/python:3.10.2
