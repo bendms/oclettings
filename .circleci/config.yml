@@ -51,7 +51,7 @@ jobs:
       - run:
         name: Publishing Docker Image to Docker Hub
         command: |
-        echo “$DOCKERHUB_PASS” | docker login -u “$DOCKERHUB_USERNAME” — password-stdin
+        “$DOCKERHUB_PASS” | docker login -u “$DOCKERHUB_USERNAME” — password-stdin
         docker build -t ocletting_8 .
         docker push ocletting_8:latest
 
