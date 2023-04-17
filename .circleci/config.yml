@@ -61,11 +61,11 @@ jobs:
           name: Publish to Docker Hub
           command: docker push "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
 
-  # heroku_deploy:
-  #   executor: heroku/default
-  #   steps:
-  #     - heroku/deploy-via-git:
-  #         force: true
+  heroku_deploy:
+    executor: heroku/default
+    steps:
+      - heroku/deploy-via-git:
+          force: true
     
 
 # Invoke jobs via workflows
@@ -76,12 +76,14 @@ workflows:
     jobs:
       - build-test-linting
       - build-and-push-to-dockerhub
-  heroku_deploy:
+  deploy:
     jobs:
-      - heroku/deploy-via-git:
-        requires:
-          - build_test_linting
-        filters:
-        branches:
-          only: main
+      - heroku_deploy
+    # jobs:
+    #   - heroku/deploy-via-git:
+    #     requires:
+    #       - build_test_linting
+    #     filters:
+    #     branches:
+    #       only: main
       
