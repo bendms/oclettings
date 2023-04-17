@@ -65,12 +65,7 @@ jobs:
     executor: heroku/default
     steps:
       - checkout
-      - heroku/deploy-via-git:
-          requires:
-            -build-test-linting
-          filters:
-          branches:
-            only: main
+      - heroku/deploy-via-git
     
 
 # Invoke jobs via workflows
@@ -84,6 +79,11 @@ workflows:
   deploy:
     jobs:
       - heroku_deploy
+        requires:
+          - build-test-linting
+        filters:
+        branches:
+          only: main
     # jobs:
     #   - heroku/deploy-via-git:
     #     requires:
