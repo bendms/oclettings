@@ -78,7 +78,7 @@ workflows:
       - build-and-push-to-dockerhub
   deploy:
     jobs:
-      - heroku_deploy
+      - heroku_deploy:
         requires:
           - build-test-linting
         filters:
