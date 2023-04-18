@@ -10,7 +10,7 @@ orbs:
   # so you dont have to copy and paste it everywhere.
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/python
   python: circleci/python@2.1.1
-  # docker: circleci/docker@2.2.0
+  docker: circleci/docker@2.2.0
   heroku: circleci/heroku@2.0.0
 
 # Define a job to be invoked later in a workflow.
@@ -60,7 +60,6 @@ jobs:
       - run:
           name: Publish to Docker Hub
           command: docker push "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
-
   heroku_deploy:
     docker: 
       - image: "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
@@ -68,8 +67,7 @@ jobs:
       - checkout
       - run:
           name: Deploy app from Dockerhub
-          run: |
-            docker-compose up -d
+          run: docker-compose up -d
     
 
 # Invoke jobs via workflows
