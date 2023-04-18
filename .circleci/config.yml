@@ -86,11 +86,4 @@ workflows:
             - build-test-linting
             - build-and-push-to-dockerhub
 
-    # jobs:
-    #   - heroku/deploy-via-git:
-    #     requires:
-    #       - build_test_linting
-    #     filters:
-    #     branches:
-    #       only: main
       
