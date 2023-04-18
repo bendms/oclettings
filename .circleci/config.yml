@@ -69,7 +69,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Deploy app from Dockerhub
-          command: docker run -d ${CIRCLE_SHA1}
+          command: docker/docker run -d ${CIRCLE_SHA1}
     
 
 # Invoke jobs via workflows
