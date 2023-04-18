@@ -79,12 +79,12 @@ workflows:
     jobs:
       - build-test-linting
       - build-and-push-to-dockerhub:
-        requires:
-          - build-test-linting
+          requires:
+            - build-test-linting
       - deployment:
-        requires:
-          - build-test-linting
-          - build-and-push-to-dockerhub
+          requires:
+            - build-test-linting
+            - build-and-push-to-dockerhub
 
     # jobs:
     #   - heroku/deploy-via-git:
