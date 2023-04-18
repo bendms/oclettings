@@ -63,7 +63,7 @@ jobs:
 
   deployment:
     docker:
-      - image: bdms/oclettings:${CIRCLE_SHA1}
+      - image: "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
     steps:
       - checkout
       - run:
