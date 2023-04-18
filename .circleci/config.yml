@@ -85,5 +85,3 @@ workflows:
           requires:
             - build-test-linting
             - build-and-push-to-dockerhub
-
-      
