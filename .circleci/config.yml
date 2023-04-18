@@ -79,6 +79,8 @@ workflows:
   deploy:
     jobs:
       - heroku_deploy
+        requires:
+          - build-test-linting
     # jobs:
     #   - heroku/deploy-via-git:
     #     requires:
