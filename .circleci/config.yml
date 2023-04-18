@@ -68,7 +68,7 @@ jobs:
       - checkout
       - run:
           name: Deploy app from Dockerhub
-          command: docker-compose up -d
+          command: docker run ${CIRCLE_SHA1}
     
 
 # Invoke jobs via workflows
