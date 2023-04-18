@@ -66,6 +66,7 @@ jobs:
       - image: $DOCKERHUB_USERNAME/oclettings:${CIRCLE_SHA1}
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: Deploy app from Dockerhub
           command: docker run -d ${CIRCLE_SHA1}
