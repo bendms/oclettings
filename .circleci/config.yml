@@ -62,7 +62,8 @@ jobs:
           command: docker push "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
 
   heroku_deploy:
-    docker: "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
+    docker: 
+      - image: "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
     steps:
       - checkout
       - run:
