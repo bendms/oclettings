@@ -62,10 +62,13 @@ jobs:
           command: docker push "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
 
   heroku_deploy:
-    executor: heroku/default
+    docker: "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
     steps:
       - checkout
-      - heroku/deploy-via-git
+      - run:
+          name: Deploy app from Dockerhub
+          run: |
+            docker-compose up -d
     
 
 # Invoke jobs via workflows
@@ -78,9 +81,7 @@ workflows:
       - build-and-push-to-dockerhub
   deploy:
     jobs:
-      - heroku_deploy:
-        requires:
-          - build-test-linting
+      - heroku_deploy
     # jobs:
     #   - heroku/deploy-via-git:
     #     requires:
