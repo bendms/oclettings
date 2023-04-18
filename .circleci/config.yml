@@ -60,8 +60,8 @@ jobs:
       - run:
           name: Publish to Docker Hub
           command: docker push "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
-  heroku_deploy:
-    docker: 
+  heroku_deploy_from_docker:
+    docker:
       - image: "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
     steps:
       - checkout
@@ -78,9 +78,7 @@ workflows:
     jobs:
       - build-test-linting
       - build-and-push-to-dockerhub
-  deploy:
-    jobs:
-      - heroku_deploy
+      - heroku_deploy_from_docker
     # jobs:
     #   - heroku/deploy-via-git:
     #     requires:
