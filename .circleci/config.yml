@@ -78,10 +78,10 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-test-linting
-      - build-and-push-to-dockerhub
+      - build-and-push-to-dockerhub:
         requires:
           - build-test-linting
-      - deployment
+      - deployment:
         requires:
           - build-test-linting
           - build-and-push-to-dockerhub
