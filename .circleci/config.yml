@@ -63,15 +63,16 @@ jobs:
 
   deployment:
     docker:
-      - image: $DOCKERHUB_USERNAME/oclettings:${CIRCLE_SHA1}
+      - image: cimg/python:3.10.2
     steps:
       - checkout
-      - setup_remote_docker
       - run:
           name: Deploy app from Dockerhub
           command: |
-            # curl https://cli-assets.heroku.com/install.sh | sh
+            curl https://cli-assets.heroku.com/install.sh | sh
+            echo $HEROKU_API_KEY
             heroku container:login $HEROKU_API_KEY
+            echo $HEROKU_APP_NAME
             heroku container:push web -a $HEROKU_APP_NAME
             heroku container:release web -a $HEROKU_APP_NAME
 
