@@ -70,11 +70,10 @@ jobs:
       - run:
           name: Deploy app from Dockerhub
           command: |
-            docker run -d "$DOCKERHUB_USERNAME"/oclettings:${CIRCLE_SHA1}
             sudo curl https://cli-assets.heroku.com/install.sh | sh
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a oclettings web
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a oclettings web
+            heroku container:login $HEROKU_API_KEY
+            heroku container:push web -a $HEROKU_APP_NAME
+            heroku container:release web -a $HEROKU_APP_NAME
 
     
 
