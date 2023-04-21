@@ -66,6 +66,7 @@ jobs:
       - image: cimg/python:3.10.2
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: Deploy app from Dockerhub
           command: |
