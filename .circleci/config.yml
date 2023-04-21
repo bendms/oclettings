@@ -70,9 +70,7 @@ jobs:
           name: Deploy app from Dockerhub
           command: |
             curl https://cli-assets.heroku.com/install.sh | sh
-            echo $HEROKU_API_KEY
             heroku container:login $HEROKU_API_KEY
-            echo $HEROKU_APP_NAME
             heroku container:push web -a $HEROKU_APP_NAME
             heroku container:release web -a $HEROKU_APP_NAME
 
