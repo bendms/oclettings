@@ -75,7 +75,6 @@ jobs:
             heroku container:push web -a "$HEROKU_APP_NAME"
             heroku container:release web -a "$HEROKU_APP_NAME"
 
-    
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
