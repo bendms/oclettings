@@ -4,7 +4,7 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-    run_before = [
+    dependencies = [
         ("profiles", "0002_auto_20230329_1735"),
         ("lettings", "0002_auto_20230328_1358"),
         ("oc_lettings_site", "0002_auto_20230328_1354")
