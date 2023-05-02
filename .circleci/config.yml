@@ -89,7 +89,15 @@ workflows:
       - build-and-push-to-dockerhub:
           requires:
             - build-test-linting
+          filters:
+            branches:
+              only:
+                - main          
       - deployment:
           requires:
             - build-test-linting
             - build-and-push-to-dockerhub
+          filters:
+            branches:
+              only:
+                - main
