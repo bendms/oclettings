@@ -15,5 +15,6 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["python", "manage.py", "collectstatic", "--noinput"] \
-&& ["gunicorn", "oc_lettings_site.wsgi"]
+RUN python manage.py collectstatic --noinput
+
+CMD ["gunicorn", "oc_lettings_site.wsgi"]
