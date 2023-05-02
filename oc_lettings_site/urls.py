@@ -9,7 +9,6 @@ urlpatterns = [
     path("", include("profiles.urls")),
     path("", include("lettings.urls")),
     path('sentry-debug/', views.trigger_error),
-    
 ]
 
 # Utiliser les regex pour réduire
