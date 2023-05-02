@@ -35,9 +35,9 @@ jobs:
           pkg-manager: pip
           # app-dir: ~/project/package-directory/  # If your requirements.txt isn't in the root directory.
           pip-dependency-file: requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
-      - run:
-          name: Load environment variables
-          command: source .env
+      # - run:
+      #     name: Load environment variables
+      #     command: source .env
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
@@ -75,8 +75,8 @@ jobs:
           command: |
             curl https://cli-assets.heroku.com/install.sh | sh
             heroku container:login
-            heroku config:set -a "$HEROKU_APP_NAME" SECRET_KEY=$SECRET_KEY
-            heroku config:set -a "$HEROKU_APP_NAME" SENTRY_DSN=$SENTRY_DSN
+            heroku config:set -a "$HEROKU_APP_NAME" SECRET_KEY=${SECRET_KEY}
+            heroku config:set -a "$HEROKU_APP_NAME" SENTRY_DSN=${SENTRY_DSN}
             heroku container:push web -a "$HEROKU_APP_NAME"
             heroku container:release web -a "$HEROKU_APP_NAME"
 
