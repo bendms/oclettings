@@ -29,6 +29,7 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'oclettingsbdms.herokuapp.com']
 CSRF_TRUSTED_ORIGINS = ['https://*.oclettingsbdms.herokuapp.com/']
+
 # Application definition
 
 INSTALLED_APPS = [
