@@ -15,5 +15,5 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["python", "oc_lettings_site/manage.py", "collectstatic", "--noinput"] \
-CMD ["gunicorn", "oc_lettings_site.wsgi"]
+CMD ["python", "manage.py", "collectstatic", "--noinput"] \
+&& ["gunicorn", "oc_lettings_site.wsgi"]
