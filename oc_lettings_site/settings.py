@@ -1,10 +1,9 @@
-import environ
 import os
+import environ
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-from dotenv import load_dotenv
 
 env = environ.Env(
     # set casting, default value
