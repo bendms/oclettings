@@ -9,11 +9,11 @@ WORKDIR /oclettings-docker
 COPY requirements.txt .
 
 RUN  pip install --upgrade pip \
-&& pip install -r requirements.txt
+&& pip install -r requirements.txt \
+&& python manage.py collectstatic --noinput
 
 COPY . .
 
 EXPOSE 8000
 
-CMD ["python", "manage.py", "collectstatic", "--noinput"] \
-&& ["gunicorn", "oc_lettings_site.wsgi"]
+CMD ["gunicorn", "oc_lettings_site.wsgi"]
