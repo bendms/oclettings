@@ -15,5 +15,5 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["gunicorn", "oc_lettings_site.wsgi", "-b", "0.0.0.0:8000"]
+CMD ["gunicorn", "oc_lettings_site.wsgi", "127.0.0.1:8000"]
 
