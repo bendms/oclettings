@@ -15,4 +15,5 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["gunicorn", "oc_lettings_site.wsgi"]
+# CMD ["gunicorn", "oc_lettings_site.wsgi"]
+CMD ["python", "manage.py", "runserver"]
