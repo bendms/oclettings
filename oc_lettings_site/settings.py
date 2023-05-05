@@ -143,4 +143,4 @@ sentry_sdk.init(
     send_default_pii=True
 )
 
-DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
