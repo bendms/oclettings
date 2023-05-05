@@ -15,4 +15,4 @@ COPY . /oclettings-docker/
 
 EXPOSE 8000
 
-CMD ["gunicorn", "oc_lettings_site.wsgi", "--bind", "127.0.0.1:8000"]
+CMD ["gunicorn", "oc_lettings_site.wsgi"]
